@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tienda Alpine</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <style>
+/* Estilo General */
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    margin: 0; /* Elimina el margen predeterminado */
+    display: flex;
+    flex-direction: column; /* Hace que los hijos del body sean apilados verticalmente */
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    flex: 1; /* Permite que el contenido del body llene el espacio disponible */
+    display: flex;
+    flex-direction: column; /* Apila los elementos (contenido + footer) */
+    justify-content: space-between; /* Mantiene el footer en la parte inferior */
+}
+
+
+.container {
+    max-width: 1000px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra todo horizontalmente */
+    background-color: #ffffff; /* Mantiene el mismo fondo */
+}
+.remove-bg{
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+}
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado */
+header {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 11px 20px;
+    background-color: white;
+    color: black;
+    border-bottom: none;
+    margin-bottom: 0;
+
+
+}
+
+header h1 {
+    font-size: 24px;
+    margin:0;
+    text-align: center;
+    width: 100%;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Categorías */
+.categories {
+    text-align: center;
+    margin: 20px;
+}
+
+.categories ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.categories .category {
+    background: none;
+    border:0px solid #ccc;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.categories .category:hover {
+    transform: translateY(-5px); /* Mueve la categoría ligeramente hacia arriba */
+    background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra al hover */
+}
+
+    /* Sección de Producto Destacado */
+    .featured-product {
+    display: flex;
+    align-items: center; /* Centra los elementos horizontalmente */
+    gap: 15px; /* Espaciado entre la imagen y el texto */
+    padding: 20px; /* Añade un espacio interno */
+    background-color: #fff; /* Color de fondo */
+}
+
+
+.product-container {
+    max-width: 100%; /* Imagen ajusta al contenedor */
+    height: auto;
+    border: 1px solid #ddd; /* Borde opcional */
+    border-radius: 5px; /* Bordes redondeados */
+}
+.product-image {
+    margin-left:-29px;
+    max-width: 100%; /* Hace que la imagen se ajuste al contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */ 
+    max-height: 200px; /* Ajusta la altura máxima para que sea similar a las miniaturas */ 
+    margin: -30px;
+    display: block; /* Asegura que ocupa una línea */ } 
+
+.product-container img {
+    max-width: 200px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    border: 1px solid #ddd; /* Opcional: borde para la imagen */
+    border-radius: 5px; /* Opcional: esquinas redondeadas */
+}
+.product-info {
+    text-align: left; /* Alineación del texto a la izquierda */
+    margin: 50px;
+    padding:0;
+    border: auto;
+}
+.product-info h2 {
+    font-size: 28px;
+    color: #000000; /* Texto blanco */
+    background-color: white; 
+    padding: 10px; /* Añade espacio dentro del fondo */
+    border-radius: 5px; /* Bordes redondeados para el fondo */
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+.product-info p {
+    margin: 10px 0;
+    font-size: 16px; /* Tamaño del texto */
+    color: #555;
+}
+.product-info .price {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+    color: #333;
+    text-transform: uppercase; /* Texto en mayúsculas como "Buy 115 €" */
+}
+/* Miniaturas de Productos */
+.product-miniatures {
+    margin: 0px 60px;
+    padding: px;
+    background-color: #fff;
+   
+    text-align: center;
+
+
+}
+
+.product-miniatures h2 {
+    font-size: 24px; /* Tamaño destacado */
+    letter-spacing: 3px; /* Espaciado amplio */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.miniature-grid {
+    background-color: white;
+    padding: 20px; /* Opcional, ajusta el espacio si lo necesitas */
+}
+
+.miniature {
+    background-color: white;
+    border: 1px solid #ddd; /* Borde opcional para la miniatura */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+
+.miniature:hover {
+    transform: translateY(-10px); /* Hace que la miniatura se mueva hacia arriba */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Agrega sombra para un efecto más llamativo */
+}
+.miniature img {
+    max-width: 100%;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    background: none; /* Elimina cualquier fondo */
+    border: none; /* Elimina bordes alrededor de la imagen */
+    box-shadow: none; /* Evita cualquier sombra alrededor */
+}
+
+
+.miniature p {
+    font-size: 15px;
+    margin-top: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+
+/* Cuadrícula de Productos */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+
+}
+
+.product-grid article {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Pie de Página */
+footer {
+    background-color: #ffffff; /* Fondo blanco */
+    text-align: center; /* Centra los elementos del footer */
+    padding: 10px 0; /* Espaciado interno */
+}
+
+footer ul {
+    list-style: none; /* Elimina los puntos predeterminados de la lista */
+    padding: 0;
+    margin: 0;
+    display: inline-flex; /* Coloca los elementos en línea */
+    gap: 5px; /* Espaciado entre los elementos */
+}
+
+footer ul li {
+    position: relative;
+}
+
+footer ul li:not(:last-child)::after {
+    content: " / "; /* Agrega un slash como separador */
+    color: #0000ff; /* Azul del slash */
+    margin-left: 5px;
+}
+
+footer ul a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: #0000ff; /* Texto azul */
+    padding: 5px 10px; /* Espaciado interno */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Efecto suave */
+}
+
+footer ul a:hover {
+    background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
+    color: #333333; /* Cambia el color del texto */
+}
+
+.buy-button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.buy-button:hover {
+    background-color: #555;
+}
+
+.miniature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Dos columnas iguales */
+    gap: 20px; /* Espaciado entre las miniaturas */
+    justify-content: center;
+
+}
+.filter-btn {
+    background-color:white;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #bbb;
+    transform: scale(1.1);
+}
+
+.filter-btn.active {
+    background-color: #000000;
+    color: #fff;
+}
+.buy-button {
+    color: #0931fa; /* Cambia el color de la letra, en este caso, naranja */
+    background-color: white;
+    border: 1px solid blue;
+    padding: 10px 20px; /* Tamaño del botón */
+    font-size: 16px; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-weight: bold; /* Hace el texto más grueso */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animación al pasar el mouse */
+}
+
+.buy-button:hover {
+    background-color: #555555; /* Cambia el color de fondo al pasar el mouse */
+    color: #ffffff; /* Cambia el color del texto al pasar el mouse */
+}
+details {
+    margin-top: 50px;/* Ajusta la distancia hacia abajo */
+    text-align: ; /* Opcional: centra el texto si lo deseas */
+    font-size: 16px; /* Cambia el tamaño del texto si es necesario */
+padding-top: 20px;
+position: relative; /* Asegura que los movimientos sean relativos a su posición */
+transition: transform 0.3s ease, color 0.3s ease; /* Animación suave al pasar el mouse */
+}
+details:hover {
+    transform: translateY(-5px); /* Mueve el elemento hacia arriba */
+    color: #007BFF; /* Cambia el color del texto cuando se interactúa */
+}
+.slash {
+    color: blue; /* Cambia el color del slash a azul */
+    font-weight: bold; /* Opcional: haz que se vea más destacado */
+}
+@media (max-width: 750px  ){         
+    .miniature p {
+    font-size: 15px;
+    margin-top: 8px;
+    color: #333;
+    font-weight: 500;
+}
+            .miniature-grid {
+                grid-template-columns: repeat(2, 1fr);
+               
+                }
+         .product-miniatures{
+            flex-grow: initial;
+            }
+        .featured-product{
+            padding-left: 0px;
+        }
+        .product-info{
+            margin: 0px;;
+            position: relative;
+    color: rgb(0, 0, 0); /* Asegura que el texto sea visible sobre la imagen */
+    gap: 0px; /* Espacio entre la imagen y el texto */
+    text-align: left;
+    margin-left: 10px;
+        }
+        .miniature p {
+    margin-left: 0px;
+    font-size: 5px;
+}
+        .product-image{
+            text-align: left;
+    top: 0;
+    left: 50%;
+    max-width: 300px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    display: block; /* Asegura que la imagen no se alinee con el texto */
+  
+        }
+    .product-info h1{
+        position: relative;
+    font-size: 3rem; /* Ajusta el tamaño del texto */
+
+    }
+    .details{
+       
+            font-size: 16px; 
+    }
+    .footer a{
+        font-size: 15px;
+    }
+        .contenido{
+            flex-direction: column;
+            align-content: center;
+        }}
+        @media (max-width: 480px) {
+            .miniature-grid {
+                grid-template-columns: repeat(1, 1fr);
+            
+        }
+        .miniature p {
+    font-size: 15px;
+    margin-top: 8px;
+    color: #333;
+    font-weight: 500;
+}
+    }
+
+</style>
+ 
+<body>
+    <div class="container">
+    <header>
+        <h1>ALPINE</h1>
+    </header>
+    <div class="contenido">
+        <section class="featured-product">
+            <div class="product-info">
+                <h2><span class="slash">/</span> Sunglasses</h2>
+                <p>Modern, elegant and perfect for any occasion and for your daily life.</p>
+             
+                <button class="buy-button">Buy 115 €</button>
+              
+                <details>
+                    <summary id="details-text">Details</summary>
+                    <p>Additional product information here.</p>
+                </details>
+                
+                <script>
+                    document.getElementById("details-text").textContent = "product details"
+                </script>
+                
+            </div>
+            <img class="product-image" src="https://m.media-amazon.com/images/I/41IJNmxPGsL._AC_UY1000_.jpg" alt="Gafas de Sol">
+        </section>
+        <nav class="categories">
+            <ul>
+                <li><button class="category selected">X Fashion</button></li>
+                <li><button class="category">X Travel</button></li>
+                <li><button class="category">X Every Day</button></li>
+                <li><button class="category">Miniatures </button></li>
+            </ul>
+        </nav>
+        
+        
+        <section id="miniatures" class="product-miniatures">
+                       <div class="miniature-grid">
+                <div class="miniature">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_767841-MLM69578073253_052023-O.webp" alt="cinto">
+                    <p>Elegant leather belt with automatic buckle -95 €</p>
+                <p>Fashion</p>
+                </div>
+                <div class="miniature">
+                    <img src="https://s1.kuantokusta.pt/img_upload/produtos_comunicacoes/1315507_2_avizar-bolsa-smartphone-ate-6-6-couro-italiano-interior-soft-touch-slim-preto-slim-flo-2x2l.jpg" alt="Bolsa smarphone">
+                    <p>Smartphone bag - 55 €</p>
+                    <p>Every day</p>
+                </div>
+                <div class="miniature">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.FE-tdV0iuq8zjr-wxlLySAHaFK&pid=Api&P=0&h=180" alt="Guantes de cuero">
+                    <p>Leather gloves - 120 €</p>
+                    <p>Fashion</p>
+                </div>
+                <div class="miniature">
+                    <img src="https://http2.mlstatic.com/D_Q_NP_953595-MLM45721263360_042021-AB.webp" alt="Memoria">
+                    <p>Flash Drive - 15 €</p>
+                    <p>Every day</p>
+                </div>
+                <div class="miniature">
+                    <img src="https://www.zerca.com/medias/loisOsborn305919-2-1200Wx1200H?context=bWFzdGVyfGltYWdlc3wxNzM5MTh8aW1hZ2UvanBlZ3xpbWFnZXMvaGZlL2g0Ny84OTkwMzQxMjM0NzE4LmpwZ3xmNzQyMTkzODM4MjBhMDVkZDkwMjMzNDBlZmFhNjFmYTc3ZmMzZGJiOTFkYWI4M2I5YmQxMzNmNTVlYTUwNjdl" alt="Bolso de Hombre">
+                    <p>Black courrier - 395 €</p>
+                    <p>Fashion</p>
+                </div>
+                <div class="miniature">
+                    <img src="https://static.grainger.com/rp/s/is/image/Grainger/1DAX1_AS01?$glgmain$" alt="Bolso de lona negra">
+                    <p>Black Duffle - 420 €</p>
+                    <p>Fashion</p>
+                </div>
+                <div class="miniature">
+                    <img src="https://www.omega-store.co/wp-content/uploads/2023/07/AGI7939.png" alt="Funda computador">
+                    <p>Lap Top Holster - 195 €</p>
+                    <p>Every day</p>
+                </div>
+                <div class="miniature">
+                    <img src="https://image.torob.com/base/images/Xp/uD/XpuDTQeMkI25DOxI.jpg_/560x560.webp" alt="Bolso de trabajo">
+                    <p>black workbag - 395 €</p>
+                    <p>Fashion</p>
+                </div>
+                  <div class="miniature">
+                    <img src="https://purepng.com/public/uploads/large/purepng.com-black-walletwalletsmallflat-casecard-slotsleatherblack-1421526416647wea3r.png" alt="Billetera negra">
+                    <p> Wallet - 95 €</p>
+                    <p>Every day</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <ul>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#legal">Legal</a></li>
+            <li><a href="#cookies">Cookies</a></li>
+        </ul>
+    </footer>
+    </div>
+</body>
+</html>
+
+
+
+  
+
+
