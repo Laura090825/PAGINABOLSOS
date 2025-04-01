@@ -529,7 +529,7 @@ details:hover {
     max-width: 300px; /* Ajusta el tamaño de la imagen */
     height: 50%;
     margin:10%;
-    margin-left: -55%;
+    margin-left: -65%;
     margin-top: 25%;
     display: relative; /* Asegura que la imagen no se alinee con el texto */
         }
@@ -580,7 +580,149 @@ details:hover {
         
         
 
+@media (min-width: 300px) and (max-width: 449px) {
 
+/* Estilos para el encabezado */
+.header h1 {
+  margin-left: 0; /* Eliminamos el margen izquierdo */
+  text-align: center; /* Centramos el título */
+  font-size: 1.8rem; /* Ajustamos el tamaño de la fuente */
+  padding: 10px; /* Añadimos algo de padding */
+}
+
+/* Estilos para la sección de producto destacado */
+.featured-product {
+  display: flex;
+  flex-direction: column; /* Apilamos la información y la imagen */
+  align-items: center; /* Centramos los elementos horizontalmente */
+  padding: 20px; /* Añadimos padding alrededor */
+  text-align: center; /* Centramos el texto dentro de la sección */
+}
+
+.product-info {
+  margin: 20px 0; /* Espacio vertical */
+  text-align: center; /* Centramos el texto */
+  margin-left: 0; /* Eliminamos margen izquierdo */
+}
+
+.product-info h2 {
+  font-size: 1.5rem; /* Ajustamos el tamaño del subtítulo */
+}
+
+.product-info p {
+  font-size: 1rem; /* Ajustamos el tamaño del párrafo */
+  margin: 10px 0;
+}
+
+.product-info .buy-button {
+  font-size: 1rem; /* Ajustamos el tamaño del botón */
+  padding: 10px 20px;
+  margin-top: 15px;
+}
+
+.product-info details {
+  font-size: 0.9rem; /* Ajustamos el tamaño de los detalles */
+  margin-top: 20px;
+}
+
+.product-image {
+  max-width: 90%; /* La imagen ocupa un porcentaje del ancho */
+  height: auto;
+  margin-left: -50%; /* Centramos la imagen y añadimos margen superior */
+  display: block;
+  text-align: center; /* Aseguramos que el contenedor esté centrado */
+}
+
+/* Estilos para las categorías */
+.categories {
+  margin: 20px 0;
+}
+
+.categories ul {
+  display: flex;
+  flex-direction: row; /* Mostramos las categorías en fila */
+  justify-content: center; /* Centramos las categorías */
+  align-items: center;
+  gap: 10px; /* Espacio entre los botones de categoría */
+  padding: 10px;
+  flex-wrap: wrap; /* Permite que las categorías pasen a la siguiente línea */
+}
+
+.categories .category {
+  font-size: 1rem; /* Ajustamos el tamaño de la fuente de los botones */
+  padding: 8px 12px;
+  margin-bottom: 5px;
+}
+
+/* Estilos para las miniaturas de productos */
+.product-miniatures {
+  margin: 20px; /* Añadimos margen alrededor de la sección */
+}
+
+.miniature-grid {
+  grid-template-columns: repeat(1, 1fr); /* Una sola columna para pantallas pequeñas */
+  gap: 20px;
+}
+
+.miniature {
+  padding: 15px;
+  text-align: center;
+}
+
+.miniature img {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px; /* Mantenemos una altura máxima */
+  margin-bottom: 10px;
+}
+
+.miniature p {
+  font-size: 1rem; /* Tamaño de fuente para la descripción */
+  margin-top: 5px;
+}
+
+/* Estilos para el pie de página */
+footer {
+  text-align: center; /* Centramos el texto del pie de página */
+  padding: 20px;
+  margin-left: 0; /* Eliminamos el margen izquierdo */
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+}
+
+footer ul li::after {
+  content: " / ";
+  color: #0000ff;
+  margin-left: 8px;
+}
+
+footer ul li:last-child::after {
+  content: "";
+}
+
+footer ul a {
+  font-size: 0.9rem; /* Ajustamos el tamaño de la fuente de los enlaces */
+  padding: 5px 10px;
+}
+
+
+body {
+  font-size: 16px; /* Aseguramos un tamaño de fuente base razonable */
+}
+
+.container {
+  max-width: 100%; /* El contenedor ocupa todo el ancho en pantallas pequeñas */
+  padding: 0 15px; /* Añadimos un poco de padding lateral al contenedor */
+}
+}
     
     
 
