@@ -336,7 +336,7 @@ footer ul a:hover {
 }
 details {
     margin-top: 50px;/* Ajusta la distancia hacia abajo */
-    text-align: ; /* Opcional: centra el texto si lo deseas */
+  
     font-size: 16px; /* Cambia el tamaño del texto si es necesario */
 padding-top: 20px;
 position: relative; /* Asegura que los movimientos sean relativos a su posición */
@@ -350,7 +350,7 @@ details:hover {
     color: blue; /* Cambia el color del slash a azul */
     font-weight: bold; /* Opcional: haz que se vea más destacado */
 }
-@media (max-width: 750px  ){         
+@media (max-width: 750px ){         
     .miniature p {
     font-size: 15px;
     margin-top: 8px;
@@ -382,9 +382,69 @@ details:hover {
         .product-image{
             text-align: left;
     top: 0;
-    left: 50%;
+    left: -100%;
+    max-width: 300px; /* Ajusta el tamaño de la imagen */
+    height: 50%;
+    display: block; /* Asegura que la imagen no se alinee con el texto */
+  margin: 0;
+        }
+    .product-info h1{
+        position: relative;
+    font-size: 3rem; /* Ajusta el tamaño del texto */
+
+    }
+    .details{
+       
+            font-size: 16px; 
+    }
+    .footer a{
+        font-size: 15px;
+    }
+        .contenido{
+            flex-direction: column;
+            align-content: center;
+        }}
+    
+        @media (max-width: 533px) {
+            .miniature-grid {
+                grid-template-columns: repeat(1, 1fr);
+            
+        }
+        .miniature p {
+    font-size: 15px;
+    margin-top: 8px;
+    color: #333;
+    font-weight: 500;
+}
+.miniature-grid {
+                grid-template-columns: repeat(2, 1fr);
+               
+                }
+         .product-miniatures{
+            flex-grow: initial;
+            }
+        .featured-product{
+            padding-left: 0px;
+        }
+        .product-info{
+            margin: 0px;;
+            position: relative;
+    color: rgb(0, 0, 0); /* Asegura que el texto sea visible sobre la imagen */
+    gap: 0px; /* Espacio entre la imagen y el texto */
+    text-align: left;
+    margin-left: 10px;
+        }
+        .miniature p {
+    margin-left: 0px;
+    font-size: 5px;
+}
+        .product-image{
+            text-align: left;
+
+    left: 40%;
     max-width: 300px; /* Ajusta el tamaño de la imagen */
     height: auto;
+    margin: -70%;
     display: block; /* Asegura que la imagen no se alinee con el texto */
   
         }
@@ -404,18 +464,8 @@ details:hover {
             flex-direction: column;
             align-content: center;
         }}
-        @media (max-width: 480px) {
-            .miniature-grid {
-                grid-template-columns: repeat(1, 1fr);
-            
-        }
-        .miniature p {
-    font-size: 15px;
-    margin-top: 8px;
-    color: #333;
-    font-weight: 500;
-}
-    }
+    
+    
 
 </style>
  
@@ -434,7 +484,7 @@ details:hover {
               
                 <details>
                     <summary id="details-text">Details</summary>
-                    <p>Additional product information here.</p>
+                    <p>The black sunglasses have a shiny plastic frame and dark lenses that provide total protection against sunlight. The thin and comfortable temples feature black metal details, adding a touch of luxury and modernity.</p>
                 </details>
                 
                 <script>
