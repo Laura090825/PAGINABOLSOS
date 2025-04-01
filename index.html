@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tienda Alpine</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Alpine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
 /* Estilo General */
 html, body {
     height: 100%; /* Asegura que ocupen toda la altura de la ventana */
@@ -23,7 +23,7 @@ body {
     flex-direction: column; /* Apila los elementos (contenido + footer) */
     justify-content: space-between; /* Mantiene el footer en la parte inferior */
       border: 2px solid black;
-   
+
 }
 
 
@@ -31,7 +31,7 @@ body {
     max-width: 1000px; /* Ancho máximo del contenedor */
     margin: 0 auto; /* Centra todo horizontalmente */
     background-color: #ffffff; /* Mantiene el mismo fondo */
-  
+
 }
 .remove-bg{
     filter: brightness(1.1);
@@ -44,7 +44,7 @@ h1, h2, h3 {
 
 /* Encabezado */
 header {
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,10 +129,10 @@ header nav a {
 .product-image {
     margin-left:-29px;
     max-width: 100%; /* Hace que la imagen se ajuste al contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */ 
-    max-height: 200px; /* Ajusta la altura máxima para que sea similar a las miniaturas */ 
-    margin: -30px;
-    display: block; /* Asegura que ocupa una línea */ } 
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 200px; /* Ajusta la altura máxima para que sea similar a las miniaturas */
+    margin: -50%;
+    display: block; /* Asegura que ocupa una línea */ }
 
 .product-container img {
     max-width: 200px; /* Ajusta el tamaño de la imagen */
@@ -149,7 +149,7 @@ header nav a {
 .product-info h2 {
     font-size: 28px;
     color: #000000; /* Texto blanco */
-    background-color: white; 
+    background-color: white;
     padding: 10px; /* Añade espacio dentro del fondo */
     border-radius: 5px; /* Bordes redondeados para el fondo */
     text-align: center;
@@ -175,7 +175,7 @@ header nav a {
     margin: 0px 60px;
     padding: px;
     background-color: #fff;
-   
+
     text-align: center;
 
 
@@ -191,13 +191,14 @@ header nav a {
 .miniature-grid {
     background-color: white;
     padding: 20px; /* Opcional, ajusta el espacio si lo necesitas */
+    margin-left: 5%;
 }
 
 .miniature {
     background-color: white;
     border: 1px solid #ddd; /* Borde opcional para la miniatura */
     border-radius: 5px; /* Bordes redondeados */
-    padding: 10px; /* Espaciado interno */
+    padding: 40px; /* Espaciado interno */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
@@ -339,7 +340,7 @@ footer ul a:hover {
 }
 details {
     margin-top: 50px;/* Ajusta la distancia hacia abajo */
-  
+
     font-size: 16px; /* Cambia el tamaño del texto si es necesario */
 padding-top: 20px;
 position: relative; /* Asegura que los movimientos sean relativos a su posición */
@@ -357,7 +358,7 @@ details:hover {
         @media (min-width: 530px) and (max-width: 1000px) {
             .miniature-grid {
                 grid-template-columns: repeat(1, 1fr);
-            
+
         }
         .miniature p {
     font-size: 15px;
@@ -367,30 +368,31 @@ details:hover {
 }
 .miniature-grid {
                 grid-template-columns: repeat(2, 1fr);
-               
+
+
                 }
-         .product-miniatures{
-            flex-grow: initial;
-            }
+       .product-miniatures{
+                flex-grow: initial;
+                }
         .featured-product{
-            padding-left: 0px;
-            align-items: normal;
+                padding-left: 0px;
+                align-items: normal;
         }
         .product-info{
-            margin: 0px;;
-            position: relative;
+                margin: 0px;;
+                position: relative;
     color: rgb(0, 0, 0); /* Asegura que el texto sea visible sobre la imagen */
     gap: 0px; /* Espacio entre la imagen y el texto */
     text-align: left;
     margin-left: 2%;
-    
+
         }
         .miniature p {
     margin-left: 0px;
     font-size: 5px;
 }
         .product-image{
-            text-align: left;
+                text-align: left;
     top: 0;
     left: 40%;
     max-width: 300px; /* Ajusta el tamaño de la imagen */
@@ -403,11 +405,12 @@ details:hover {
 
     }
     .details{
-       
-            font-size: 16px; 
+
+
+            font-size: 16px;
     }
-     /* Categorías */
-     .categories{
+   /* Categorías */
+   .categories{
     position: relative;
     align-items: center;
     flex-wrap: nowrap;
@@ -440,7 +443,7 @@ details:hover {
         @media (min-width: 450px) and (max-width: 529px) {
             .miniature-grid {
                 grid-template-columns: repeat(1, 1fr);
-            
+
         }
         .miniature p {
     font-size: 15px;
@@ -450,30 +453,30 @@ details:hover {
 }
 .miniature-grid {
                 grid-template-columns: repeat(2, 1fr);
-               margin-left: -22%;
-               height: 50%;
-               padding: 10%;
+                margin-left: -22%;
+                height: 50%;
+                padding: 10%;
                 }
-         .product-miniatures{
-            flex-grow: initial;
-            }
+       .product-miniatures{
+                flex-grow: initial;
+                }
         .featured-product{
-            padding-left: 0px;
-            align-items: normal;
+                padding-left: 0px;
+                align-items: normal;
         }
         .product-info{
-            margin: 5%;
+                margin: 5%;
     text-align: left;
     margin-left: 10px;
-    
-    
+
+
         }
         .miniature p {
     margin-left: 0px;
     font-size: 5px;
 }
         .product-image{
-            text-align: left;
+                text-align: left;
 
     left: 40%;
     max-width: 300px; /* Ajusta el tamaño de la imagen */
@@ -490,17 +493,18 @@ details:hover {
 
     }
     .details{
-       
-            font-size: 16px; 
+
+
+            font-size: 16px;
     }
-     /* Categorías */
-  .categories {
+   /* Categorías */
+ .categories {
     margin: 10px 0;
     margin-left: -20%;
   }
 
   .categories ul {
-   
+
     display: flex; /* Asegúrate de tener esto */
     flex-direction: row; /* Esto es lo importante para las filas */
     justify-content: center; /* Centra las categorías */
@@ -519,265 +523,491 @@ details:hover {
   }
     .footer a{
         font-size: 15px;
-    
+
     }
- 
+
     footer {
     margin-left: -20%; /* Ajusta este valor para mover el footer más o menos a la izquierda */
     padding: 0;
   }
 }
-        
-        
+
 
 @media (min-width: 300px) and (max-width: 449px) {
 
 /* Estilos para el encabezado */
 .header h1 {
-  margin-left: 0; /* Eliminamos el margen izquierdo */
-  text-align: center; /* Centramos el título */
-  font-size: 1.8rem; /* Ajustamos el tamaño de la fuente */
-  padding: 10px; /* Añadimos algo de padding */
+ margin-left: 0; /* Eliminamos el margen izquierdo */
+ text-align: center; /* Centramos el título */
+ font-size: 1.8rem; /* Ajustamos el tamaño de la fuente */
+ padding: 10px; /* Añadimos algo de padding */
 }
 
 /* Estilos para la sección de producto destacado */
 .featured-product {
-  display: flex;
-  flex-direction: column; /* Apilamos la información y la imagen */
-  align-items: center; /* Centramos los elementos horizontalmente */
-  padding: 20px; /* Añadimos padding alrededor */
-  text-align: center; /* Centramos el texto dentro de la sección */
+ display: flex;
+ flex-direction: column; /* Apilamos la información y la imagen */
+ align-items: center; /* Centramos los elementos horizontalmente */
+ padding: 20px; /* Añadimos padding alrededor */
+ text-align: center; /* Centramos el texto dentro de la sección */
 }
 
 .product-info {
-  margin: 20px 0; /* Espacio vertical */
-  text-align: center; /* Centramos el texto */
-  margin-left: 0; /* Eliminamos margen izquierdo */
+ margin: 20px 0; /* Espacio vertical */
+ text-align: center; /* Centramos el texto */
+ margin-left: 0; /* Eliminamos margen izquierdo */
 }
 
 .product-info h2 {
-  font-size: 1.5rem; /* Ajustamos el tamaño del subtítulo */
+ font-size: 1.5rem; /* Ajustamos el tamaño del subtítulo */
 }
 
 .product-info p {
-  font-size: 1rem; /* Ajustamos el tamaño del párrafo */
-  margin: 10px 0;
+ font-size: 1rem; /* Ajustamos el tamaño del párrafo */
+ margin: 10px 0;
 }
 
 .product-info .buy-button {
-  font-size: 1rem; /* Ajustamos el tamaño del botón */
-  padding: 10px 20px;
-  margin-top: 15px;
+ font-size: 1rem; /* Ajustamos el tamaño del botón */
+ padding: 10px 20px;
+ margin-top: 15px;
 }
 
 .product-info details {
-  font-size: 0.9rem; /* Ajustamos el tamaño de los detalles */
-  margin-top: 20px;
+ font-size: 0.9rem; /* Ajustamos el tamaño de los detalles */
+ margin-top: 20px;
 }
 
 .product-image {
-  max-width: 90%; /* La imagen ocupa un porcentaje del ancho */
-  height: auto;
-  margin-left: -10%; /* Centramos la imagen y añadimos margen superior */
-  display: block;
-  text-align: center; /* Aseguramos que el contenedor esté centrado */
+ max-width: 90%; /* La imagen ocupa un porcentaje del ancho */
+ height: auto;
+ margin-left: -10%; /* Centramos la imagen y añadimos margen superior */
+ display: block;
+ text-align: center; /* Aseguramos que el contenedor esté centrado */
 }
 
 /* Estilos para las categorías */
 .categories {
-  margin: 20px 0;
+ margin: 20px 0;
 }
 
 .categories ul {
-  display: flex;
-  flex-direction: row; /* Mostramos las categorías en fila */
-  justify-content: center; /* Centramos las categorías */
-  align-items: center;
-  gap: 10px; /* Espacio entre los botones de categoría */
-  padding: 10px;
-  flex-wrap: wrap; /* Permite que las categorías pasen a la siguiente línea */
+ display: flex;
+ flex-direction: row; /* Mostramos las categorías en fila */
+ justify-content: center; /* Centramos las categorías */
+ align-items: center;
+ gap: 10px; /* Espacio entre los botones de categoría */
+ padding: 10px;
+ flex-wrap: wrap; /* Permite que las categorías pasen a la siguiente línea */
 }
 
 .categories .category {
-  font-size: 1rem; /* Ajustamos el tamaño de la fuente de los botones */
-  padding: 8px 12px;
-  margin-bottom: 5px;
+ font-size: 1rem; /* Ajustamos el tamaño de la fuente de los botones */
+ padding: 8px 12px;
+ margin-bottom: 5px;
 }
 
 /* Estilos para las miniaturas de productos */
 .product-miniatures {
-  margin: 20px; /* Añadimos margen alrededor de la sección */
+ margin: 20px; /* Añadimos margen alrededor de la sección */
 }
 
 .miniature-grid {
-  grid-template-columns: repeat(1, 1fr); /* Una sola columna para pantallas pequeñas */
-  gap: 20px;
+ grid-template-columns: repeat(1, 1fr); /* Una sola columna para pantallas pequeñas */
+ gap: 20px;
 }
 
 .miniature {
-  padding: 15px;
-  text-align: center;
+ padding: 15px;
+ text-align: center;
 }
 
 .miniature img {
-  max-width: 100%;
-  height: auto;
-  max-height: 200px; /* Mantenemos una altura máxima */
-  margin-bottom: 10px;
+ max-width: 100%;
+ height: auto;
+ max-height: 200px; /* Mantenemos una altura máxima */
+ margin-bottom: 10px;
 }
 
 .miniature p {
-  font-size: 1rem; /* Tamaño de fuente para la descripción */
-  margin-top: 5px;
+ font-size: 1rem; /* Tamaño de fuente para la descripción */
+ margin-top: 5px;
 }
 
 /* Estilos para el pie de página */
 footer {
-  text-align: center; /* Centramos el texto del pie de página */
-  padding: 20px;
-  margin-left: 0; /* Eliminamos el margen izquierdo */
+ text-align: center; /* Centramos el texto del pie de página */
+ padding: 20px;
+ margin-left: 0; /* Eliminamos el margen izquierdo */
 }
 
 footer ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  padding: 0;
-  list-style: none;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ gap: 15px;
+ padding: 0;
+ list-style: none;
 }
 
 footer ul li::after {
-  content: " / ";
-  color: #0000ff;
-  margin-left: 8px;
+ content: " / ";
+ color: #0000ff;
+ margin-left: 8px;
 }
 
 footer ul li:last-child::after {
-  content: "";
+ content: "";
 }
 
 footer ul a {
-  font-size: 0.9rem; /* Ajustamos el tamaño de la fuente de los enlaces */
-  padding: 5px 10px;
+ font-size: 0.9rem; /* Ajustamos el tamaño de la fuente de los enlaces */
+ padding: 5px 10px;
 }
 
 
 body {
-  font-size: 16px; /* Aseguramos un tamaño de fuente base razonable */
+ font-size: 16px; /* Aseguramos un tamaño de fuente base razonable */
 }
 
 .container {
-  max-width: 100%; /* El contenedor ocupa todo el ancho en pantallas pequeñas */
-  padding: 0 15px; /* Añadimos un poco de padding lateral al contenedor */
+ max-width: 100%; /* El contenedor ocupa todo el ancho en pantallas pequeñas */
+ padding: 0 15px; /* Añadimos un poco de padding lateral al contenedor */
 }
 }
-    
-    
+
+.left-header, .right-header {
+ display: flex; /* Para alinear los elementos internos horizontalmente */
+ align-items: center;
+}
+
+.menu-icon {
+    font-size: 1.5em;
+    margin-right: 80px; /* Aumenta el margen derecho para separar el icono de "Back" */
+}
+
+.back-text {
+ margin-right: 20px;
+}
+
+.logo {
+ margin: 0; /* Elimina el margen predeterminado del h1 */
+ font-size: 2em; /* Ajusta el tamaño del logo */
+}
+
+.cart-text {
+    margin-right: 5px;
+    white-space: nowrap; /* Evita el salto de línea */
+}
+
+.user-icon {
+ font-size: 1.5em; /* Ajusta el tamaño del icono de usuario */
+ margin-left: 10px;
+}
+
+/* Opcional: Estilos para el número del carrito */
+.cart-count {
+ font-weight: bold;
+}
+
+.current-language {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.language-arrow {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    margin-left: 80px; /* Añade un margen izquierdo para separarlo del carrito */
+    position: relative;
+}
+.right-header {
+    display: flex;
+    align-items: center;
+}
+
+/* Sección de Producto Destacado */
+.featured-product {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y la información */
+    gap: 15px;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 20px;
+    flex-direction: row; /* Mantiene la disposición en fila para imagen e info */
+}
+
+.product-info {
+    text-align: left;
+    margin: 50px;
+    padding: 0;
+    border: auto;
+    flex-grow: 1; /* Permite que la información ocupe el espacio restante */
+}
+
+.product-image {
+    margin-left: -29px;
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    margin: -30px;
+    display: block;
+}
+
+.details-steps-container {
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-top: 80px; /* Añade espacio superior para separarlo */
+    display: flex; /* Para alinear los elementos internos (product details y 01-04) */
+    align-items: center; /* Alinea verticalmente los elementos internos */
+    /* justify-content: space-between; */ /* Comenta o elimina esto para alinear a la izquierda */
+}
+
+.product-steps {
+    display: flex;
+    align-items: center;
+    margin-left: 149%; /* Espacio entre "product details" y "01-04" */
+    margin-top: 15%;
+}
+
+.step-separator {
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 20px;
+    margin: 0 10px;
+}
+
+.step-arrow {
+    font-size: 1.2em;
+    color: blue;
+    margin-left: 10px;
+}
+
+.details-steps-container > details {
+    width: auto; /* Ajusta el ancho según el contenido */
+}
+
+.details-steps-container > details > summary {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    white-space: nowrap; /* Evita que el texto se envuelva */
+}
+.filter-x {
+    font-size: 1em; /* Ajusta el tamaño según necesites */
+    color: #888; /* Un color más claro o grisáceo para menos visibilidad */
+    margin-right: 5px; /* Espacio entre la 'x' y el texto */
+}
+
+/* Estilos para la nueva estructura de las miniaturas */
+.miniature-description {
+    font-size: 15px;
+    margin-top: 8px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 5px; /* Añade un poco de espacio debajo de la descripción */
+    white-space: nowrap; /* Evita que el precio salte a la siguiente línea si el nombre es muy largo */
+    display: flex; /* Habilita Flexbox para alinear los elementos internos */
+    justify-content: space-between; /* Coloca el primer elemento hijo a la izquierda y el último a la derecha */
+    align-items: center; /* Alinea verticalmente los elementos en el centro (opcional) */
+}
+
+.miniature-description .product-name {
+    text-align: left; /* Asegura que el nombre esté alineado a la izquierda */
+}
+
+.miniature-description .product-price {
+    text-align: right; /* Asegura que el precio esté alineado a la derecha */
+}
+
+.miniature .miniature-category {
+ font-size: 15px;
+color: #777 !important; /* Cambiamos el color a grisáceo y mantenemos !important */
+font-weight: 500;
+ margin: 0;
+  text-align: left !important; /* Cambiamos la alineación a la izquierda y mantenemos !important */
+}
+.footer-links {
+    flex-grow: 1; /* Permite que este contenedor se expanda para ocupar el espacio */
+    text-align: center; /* Centra el contenido dentro de este contenedor */
+  }
+
+  footer ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+    margin: 0; /* Elimina el margen predeterminado de la lista */
+    display: inline-block; /* Permite centrar el bloque de la lista */
+  }
+
+  footer ul li {
+    display: inline; /* Coloca los elementos de la lista en línea */
+    margin-right: 15px; /* Agrega un margen derecho entre los elementos de la lista */
+  }
+
+  footer ul li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento de la lista */
+  }
+
+  .footer-right {
+    margin-left: -50%; /* Empuja este elemento hacia la derecha */
+  }
 
 </style>
- 
+
+
 <body>
     <div class="container">
-    <header>
-        <h1>ALPINE</h1>
-    </header>
-    <div class="contenido">
-        <section class="featured-product">
-            <div class="product-info">
-                <h2><span class="slash">/</span> Sunglasses</h2>
-                <p>Modern, elegant and perfect for any occasion and for your daily life.</p>
-             
-                <button class="buy-button">Buy 115 €</button>
-              
-                <details>
-                    <summary id="details-text">Details</summary>
-                    <p>The black sunglasses have a shiny plastic frame and dark lenses that provide total protection against sunlight. The thin and comfortable temples feature black metal details, adding a touch of luxury and modernity.</p>
-                </details>
-                
-                <script>
-                    document.getElementById("details-text").textContent = "product details"
-                </script>
-                
+        <header>
+            <div class="left-header">
+                <div class="menu-icon">☰</div>
+                <span class="back-text">Back</span>
             </div>
-            <img class="product-image" src="https://m.media-amazon.com/images/I/41IJNmxPGsL._AC_UY1000_.jpg" alt="Gafas de Sol">
-        </section>
-        <nav class="categories">
+            <h1 class="logo">ALPINE</h1>
+            <div class="right-header">
+                <span class="cart-text">Cart : 0</span>
+
+                <div class="language-selector">
+                    <div class="current-language">
+                        <span class="lang-code">ES</span> <span class="language-arrow">▼</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="contenido">
+            <section class="featured-product">
+                <div class="product-info">
+                    <h2><span class="slash">/</span> Sunglasses</h2>
+                    <p>Black sunglasses are a classic of fashion.  
+                        They offer style and effective sun protection.  
+                        Their dark color is elegant and versatile.  
+                        Perfect for any occasion and look.  
+                        An essential accessory in Medellín.</p>
+
+                    <button class="buy-button">Buy 115 €</button>
+
+                    <div class="details-steps-container">
+                        <details>
+                            <summary id="details-text">Product details<span class="detaills">▼</span></summary>
+                            <p>The black sunglasses have a shiny plastic frame and dark lenses that provide total protection against sunlight. The thin and comfortable temples feature black metal details, adding a touch of luxury and modernity.</p>
+                        </details>
+                        <div class="product-steps">
+                            <span>01</span>
+                            <hr class="step-separator">
+                            <span>04</span>
+                            <span class="step-arrow">→</span>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.getElementById("details-text").textContent = "product details"
+                    </script>
+
+                </div>
+                <img class="product-image" src="https://m.media-amazon.com/images/I/41IJNmxPGsL._AC_UY1000_.jpg" alt="Gafas de Sol">
+            </section>
+            <nav class="categories">
+                <ul>
+                    <li><button class="category selected"><span class="filter-x">x</span> Fashion</button></li>
+                    <li><button class="category"><span class="filter-x">x</span> Travel</button></li>
+                    <li><button class="category"><span class="filter-x">x</span> Every Day</button></li>
+                    <li><button class="category">Miniatures </button></li>
+                </ul>
+            </nav>
+
+
+            <section id="miniatures" class="product-miniatures">
+                                    <div class="miniature-grid">
+                        <div class="miniature">
+                            <img src="https://http2.mlstatic.com/D_NQ_NP_767841-MLM69578073253_052023-O.webp" alt="cinto">
+                            <p class="miniature-description">
+                                <span class="product-name">Black leather belt</span>
+                                <span class="product-price">-95 €</span>
+                            </p>
+                            <p class="miniature-category">Fashion</p>
+                        </div>
+                        <div class="miniature">
+                            <img src="https://s1.kuantokusta.pt/img_upload/produtos_comunicacoes/1315507_2_avizar-bolsa-smartphone-ate-6-6-couro-italiano-interior-soft-touch-slim-preto-slim-flo-2x2l.jpg" alt="Bolsa smarphone">
+                            <p class="miniature-description">
+                                <span class="product-name">Smartphone bag</span>
+                                <span class="product-price">-55 €</span>
+                            </p>
+                            <p class="miniature-category">Every day</p>
+                        </div>
+                        <div class="miniature">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.FE-tdV0iuq8zjr-wxlLySAHaFK&pid=Api&P=0&h=180" alt="Guantes de cuero">
+                            <p class="miniature-description">
+                                <span class="product-name">Leather gloves</span>
+                                <span class="product-price">-120 €</span>
+                            </p>
+                            <p class="miniature-category">Fashion</p>
+                        </div>
+                        <div class="miniature">
+                            <img src="https://http2.mlstatic.com/D_Q_NP_953595-MLM45721263360_042021-AB.webp" alt="Memoria">
+                            <p class="miniature-description">
+                                <span class="product-name">Flash Drive</span>
+                                <span class="product-price">-15 €</span>
+                            </p>
+                            <p class="miniature-category">Every day</p>
+                        </div>
+                        <div class="miniature">
+                            <img src="https://www.zerca.com/medias/loisOsborn305919-2-1200Wx1200H?context=bWFzdGVyfGltYWdlc3wxNzM5MTh8aW1hZ2UvanBlZ3xpbWFnZXMvaGZlL2g0Ny84OTkwMzQxMjM0NzE4LmpwZ3xmNzQyMTkzODM4MjBhMDVkZDkwMjMzNDBlZmFhNjFmYTc3ZmMzZGJiOTFkYWI4M2I5YmQxMzNmNTVlYTUwNjdl" alt="Bolso de Hombre">
+                            <p class="miniature-description">
+                                <span class="product-name">Black courrier</span>
+                                <span class="product-price">-395 €</span>
+                            </p>
+                            <p class="miniature-category">Fashion</p>
+                        </div>
+                        <div class="miniature">
+                            <img src="https://static.grainger.com/rp/s/is/image/Grainger/1DAX1_AS01?$glgmain$" alt="Bolso de lona negra">
+                            <p class="miniature-description">
+                                <span class="product-name">Black Duffle</span>
+                                <span class="product-price">-420 €</span>
+                            </p>
+                            <p class="miniature-category">Fashion</p>
+                        </div>
+                        <div class="miniature">
+                            <img src="https://www.omega-store.co/wp-content/uploads/2023/07/AGI7939.png" alt="Funda computador">
+                            <p class="miniature-description">
+                                <span class="product-name">Lap Top Holster</span>
+                                <span class="product-price">-195 €</span>
+                            </p>
+                            <p class="miniature-category">Every day</p>
+                        </div>
+                        <div class="miniature">
+                            <img src="https://image.torob.com/base/images/Xp/uD/XpuDTQeMkI25DOxI.jpg_/560x560.webp" alt="Bolso de trabajo">
+                            <p class="miniature-description">
+                                <span class="product-name">black workbag</span>
+                                <span class="product-price">-395 €</span>
+                            </p>
+                            <p class="miniature-category">Fashion</p>
+                        </div>
+                         <div class="miniature">
+                            <img src="https://purepng.com/public/uploads/large/purepng.com-black-walletwalletsmallflat-casecard-slotsleatherblack-1421526416647wea3r.png" alt="Billetera negra">
+                            <p class="miniature-description">
+                                <span class="product-name"> Wallet</span>
+                                <span class="product-price">-95 €</span>
+                            </p>
+                            <p class="miniature-category">Every day</p>
+                        </div>
+                    </div>
+            </section>
+        </div>
+
+        <footer>
             <ul>
-                <li><button class="category selected">X Fashion</button></li>
-                <li><button class="category">X Travel</button></li>
-                <li><button class="category">X Every Day</button></li>
-                <li><button class="category">Miniatures </button></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#legal">Legal</a></li>
+                <li><a href="#cookies">Cookies</a></li>
             </ul>
-        </nav>
-        
-        
-        <section id="miniatures" class="product-miniatures">
-                       <div class="miniature-grid">
-                <div class="miniature">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_767841-MLM69578073253_052023-O.webp" alt="cinto">
-                    <p>Elegant leather belt with automatic buckle -95 €</p>
-                <p>Fashion</p>
-                </div>
-                <div class="miniature">
-                    <img src="https://s1.kuantokusta.pt/img_upload/produtos_comunicacoes/1315507_2_avizar-bolsa-smartphone-ate-6-6-couro-italiano-interior-soft-touch-slim-preto-slim-flo-2x2l.jpg" alt="Bolsa smarphone">
-                    <p>Smartphone bag - 55 €</p>
-                    <p>Every day</p>
-                </div>
-                <div class="miniature">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.FE-tdV0iuq8zjr-wxlLySAHaFK&pid=Api&P=0&h=180" alt="Guantes de cuero">
-                    <p>Leather gloves - 120 €</p>
-                    <p>Fashion</p>
-                </div>
-                <div class="miniature">
-                    <img src="https://http2.mlstatic.com/D_Q_NP_953595-MLM45721263360_042021-AB.webp" alt="Memoria">
-                    <p>Flash Drive - 15 €</p>
-                    <p>Every day</p>
-                </div>
-                <div class="miniature">
-                    <img src="https://www.zerca.com/medias/loisOsborn305919-2-1200Wx1200H?context=bWFzdGVyfGltYWdlc3wxNzM5MTh8aW1hZ2UvanBlZ3xpbWFnZXMvaGZlL2g0Ny84OTkwMzQxMjM0NzE4LmpwZ3xmNzQyMTkzODM4MjBhMDVkZDkwMjMzNDBlZmFhNjFmYTc3ZmMzZGJiOTFkYWI4M2I5YmQxMzNmNTVlYTUwNjdl" alt="Bolso de Hombre">
-                    <p>Black courrier - 395 €</p>
-                    <p>Fashion</p>
-                </div>
-                <div class="miniature">
-                    <img src="https://static.grainger.com/rp/s/is/image/Grainger/1DAX1_AS01?$glgmain$" alt="Bolso de lona negra">
-                    <p>Black Duffle - 420 €</p>
-                    <p>Fashion</p>
-                </div>
-                <div class="miniature">
-                    <img src="https://www.omega-store.co/wp-content/uploads/2023/07/AGI7939.png" alt="Funda computador">
-                    <p>Lap Top Holster - 195 €</p>
-                    <p>Every day</p>
-                </div>
-                <div class="miniature">
-                    <img src="https://image.torob.com/base/images/Xp/uD/XpuDTQeMkI25DOxI.jpg_/560x560.webp" alt="Bolso de trabajo">
-                    <p>black workbag - 395 €</p>
-                    <p>Fashion</p>
-                </div>
-                  <div class="miniature">
-                    <img src="https://purepng.com/public/uploads/large/purepng.com-black-walletwalletsmallflat-casecard-slotsleatherblack-1421526416647wea3r.png" alt="Billetera negra">
-                    <p> Wallet - 95 €</p>
-                    <p>Every day</p>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <footer>
-        <ul>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#media">Media</a></li>
-            <li><a href="#legal">Legal</a></li>
-            <li><a href="#cookies">Cookies</a></li>
-        </ul>
-    </footer>
-    </div>
+            <p>Lu Ma Mi Ju Vi</p>
+        </footer>
+
 </body>
 </html>
-
-
-
-  
-
-
