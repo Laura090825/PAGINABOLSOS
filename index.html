@@ -462,6 +462,9 @@ footer .Diassemana{
         }
 
         @media (min-width: 530px) and (max-width: 1000px) {
+            .header{
+                flex-direction: column-reverse; /* Apilamos los elementos del header */
+            }
   .miniature-grid {
     grid-template-columns: repeat(2, 1fr); /* Mantenemos 2 columnas */
     margin-left: 0; /* Elimina el margen izquierdo negativo */
@@ -530,6 +533,9 @@ footer .Diassemana{
 }
 
         @media (min-width: 450px) and (max-width: 529px) {
+            .header{
+                flex-direction: column-reverse; /* Apilamos los elementos del header */
+            }
             .miniature-grid {
                 grid-template-columns: repeat(1, 1fr);
 
@@ -645,7 +651,7 @@ footer .Diassemana{
   /* Estilos para el encabezado */
   header {
     padding: 10px 20px; /* Reducimos el padding del encabezado */
-    flex-direction: column; /* Apilamos los elementos del header */
+    flex-direction: column-reverse; /* Apilamos los elementos del header */
     align-items: center; /* Centramos los elementos del header */
   }
 
@@ -671,7 +677,7 @@ footer .Diassemana{
 
   /* Estilos para la sección de producto destacado */
   .featured-product {
-    flex-direction: column; /* Apilamos la información y la imagen */
+    flex-direction: column-reverse;/* Apilamos la información y la imagen */
     align-items: center; /* Centramos los elementos */
     padding: 20px;
     text-align: center;
@@ -795,10 +801,15 @@ footer .Diassemana{
     font-size: 0.8rem; /* Reducimos el tamaño de la fuente de los enlaces */
     padding: 5px 10px;
   }
-
+footer .language-selector span{
+margin-left: 30px;
+}
   footer .dbhref {
     margin-top: 10px; /* Añadimos un margen superior */
     text-align: center; /* Centramos el texto */
+  }
+  footer .Diassemana{
+    margin-left: 30px;
   }
 
   .container {
