@@ -1,864 +1,976 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Alpine</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<style>
-/* Estilo General */
-html, body {
-    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
-    margin: 0; /* Elimina el margen predeterminado */
+    <style>
+        /* Estilo General */
+        html,
+        body {
+            height: 100%;
+            /* Asegura que ocupen toda la altura de la ventana */
+            margin: 0;
+            /* Elimina el margen predeterminado */
+            display: flex;
+            flex-direction: column;
+            /* Hace que los hijos del body sean apilados verticalmente */
+            padding: 0;
+            overflow-x: hidden;
+
+        }
+
+        body {
+            flex: 1;
+            /* Permite que el contenido del body llene el espacio disponible */
+            display: flex;
+            flex-direction: column;
+            /* Apila los elementos (contenido + footer) */
+            justify-content: space-between;
+            /* Mantiene el footer en la parte inferior */
+            background-color: #000000;
+
+        }
+
+
+        .container {
+            max-width: 1000px;
+            /* Ancho máximo del contenedor */
+            margin: 0 auto;
+            /* Centra todo horizontalmente */
+            background-color: #ffffff;
+            /* Mantiene el mismo fondo */
+
+        }
+
+        .remove-bg {
+            filter: brightness(1.1);
+            mix-blend-mode: multiply;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Encabezado */
+        header {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 11px 40px;
+            background-image: linear-gradient(to right, #b4b1b1bb 50%, rgba(180, 177, 177, 0.8) 75%, white 100%);
+            color: black;
+            border-bottom: none;
+            margin-bottom: 0;
+
+
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Categorías */
+        .categories {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .categories ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .categories .category {
+            background: none;
+            border: 0px solid #ccc;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+footer .language-selector span{
+    margin-right: 30px;
+
+}
+        .categories .category:hover {
+            transform: translateY(-5px);
+            /* Mueve la categoría ligeramente hacia arriba */
+            background-color: #f0f0f0;
+            /* Cambia el color de fondo al pasar el mouse */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Añade sombra al hover */
+        }
+
+        /* Sección de Producto Destacado */
+        .featured-product {
     display: flex;
-    flex-direction: column; /* Hace que los hijos del body sean apilados verticalmente */
-    padding: 0;
-    overflow-x: hidden;
-}
-
-body {
-    flex: 1; /* Permite que el contenido del body llene el espacio disponible */
-    display: flex;
-    flex-direction: column; /* Apila los elementos (contenido + footer) */
-    justify-content: space-between; /* Mantiene el footer en la parte inferior */
-      border: 2px solid black;
-
-}
-
-
-.container {
-    max-width: 1000px; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centra todo horizontalmente */
-    background-color: #ffffff; /* Mantiene el mismo fondo */
-
-}
-.remove-bg{
-    filter: brightness(1.1);
-    mix-blend-mode: multiply;
-}
-h1, h2, h3 {
-    margin: 0;
-    padding: 0;
-}
-
-/* Encabezado */
-header {
-
-    display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 11px 20px;
-    background-color: white;
-    color: black;
-    border-bottom: none;
-    margin-bottom: 0;
-
-
-}
-
-header h1 {
-    font-size: 24px;
-    margin:0;
-    text-align: center;
-    width: 100%;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
     gap: 15px;
-    margin: 0;
-    padding: 0;
-}
-
-header nav a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Categorías */
-.categories {
-    text-align: center;
-    margin: 20px;
-}
-
-.categories ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px;
-}
-
-.categories .category {
-    background: none;
-    border:0px solid #ccc;
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    color: #333;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-.categories .category:hover {
-    transform: translateY(-5px); /* Mueve la categoría ligeramente hacia arriba */
-    background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra al hover */
-}
-
-    /* Sección de Producto Destacado */
-    .featured-product {
-    display: flex;
-    align-items: center; /* Centra los elementos horizontalmente */
-    gap: 15px; /* Espaciado entre la imagen y el texto */
-    padding: 20px; /* Añade un espacio interno */
-    background-color: #fff; /* Color de fondo */
-}
-
-
-.product-container {
-    max-width: 100%; /* Imagen ajusta al contenedor */
-    height: auto;
-    border: 1px solid #ddd; /* Borde opcional */
-    border-radius: 5px; /* Bordes redondeados */
-}
-.product-image {
-    margin-left:-29px;
-    max-width: 100%; /* Hace que la imagen se ajuste al contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    max-height: 200px; /* Ajusta la altura máxima para que sea similar a las miniaturas */
-    margin: -50%;
-    display: block; /* Asegura que ocupa una línea */ }
-
-.product-container img {
-    max-width: 200px; /* Ajusta el tamaño de la imagen */
-    height: auto;
-    border: 1px solid #ddd; /* Opcional: borde para la imagen */
-    border-radius: 5px; /* Opcional: esquinas redondeadas */
-}
-.product-info {
-    text-align: left; /* Alineación del texto a la izquierda */
-    margin: 50px;
-    padding:0;
-    border: auto;
-}
-.product-info h2 {
-    font-size: 28px;
-    color: #000000; /* Texto blanco */
-    background-color: white;
-    padding: 10px; /* Añade espacio dentro del fondo */
-    border-radius: 5px; /* Bordes redondeados para el fondo */
-    text-align: center;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-
-.product-info p {
-    margin: 10px 0;
-    font-size: 16px; /* Tamaño del texto */
-    color: #555;
-}
-.product-info .price {
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 15px;
-    color: #333;
-    text-transform: uppercase; /* Texto en mayúsculas como "Buy 115 €" */
-}
-/* Miniaturas de Productos */
-.product-miniatures {
-    margin: 0px 60px;
-    padding: px;
-    background-color: #fff;
-
-    text-align: center;
-
-
-}
-
-.product-miniatures h2 {
-    font-size: 24px; /* Tamaño destacado */
-    letter-spacing: 3px; /* Espaciado amplio */
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.miniature-grid {
-    background-color: white;
-    padding: 20px; /* Opcional, ajusta el espacio si lo necesitas */
-    margin-left: 5%;
-}
-
-.miniature {
-    background-color: white;
-    border: 1px solid #ddd; /* Borde opcional para la miniatura */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 40px; /* Espaciado interno */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
-}
-
-
-.miniature:hover {
-    transform: translateY(-10px); /* Hace que la miniatura se mueva hacia arriba */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Agrega sombra para un efecto más llamativo */
-}
-.miniature img {
-    max-width: 100%;
-    height: 200px;
-    display: block;
-    margin: 0 auto;
-    background: none; /* Elimina cualquier fondo */
-    border: none; /* Elimina bordes alrededor de la imagen */
-    box-shadow: none; /* Evita cualquier sombra alrededor */
-}
-
-
-.miniature p {
-    font-size: 15px;
-    margin-top: 8px;
-    color: #333;
-    font-weight: 500;
-}
-
-
-/* Cuadrícula de Productos */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
     padding: 20px;
+    background-image: linear-gradient(to right, #b4b1b1bb 50%, rgba(180, 177, 177, 0.8) 75%, white 100%);
+}
+        
 
+        .product-info {
+            text-align: left;
+            margin: 50px;
+            padding: 0;
+            border: auto;
+            flex-grow: 1;
+            /* Permite que la información ocupe el espacio restante */
+        }
+
+        .product-image {
+            margin-left: -40px;
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            margin: 50px;
+            display: block;
+        }
+
+
+        .product-container {
+            max-width: 100%;
+            /* Imagen ajusta al contenedor */
+            height: auto;
+            border: 1px solid #ddd;
+            /* Borde opcional */
+            border-radius: 5px;
+            /* Bordes redondeados */
+        }
+
+        .product-container img {
+            max-width: 200px;
+            /* Ajusta el tamaño de la imagen */
+            height: auto;
+            border: 1px solid #ddd;
+            /* Opcional: borde para la imagen */
+            border-radius: 5px;
+            /* Opcional: esquinas redondeadas */
+        }
+
+        .product-info h2 {
+            font-size: 28px;
+            color: #000000;
+            /* Texto blanco */
+            background-image:  #b4b1b1bb ;
+            padding: 10px;
+            /* Añade espacio dentro del fondo */
+            border-radius: 5px;
+            /* Bordes redondeados para el fondo */
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .product-info p {
+            margin: 10px 0;
+            font-size: 16px;
+            /* Tamaño del texto */
+            color: #555;
+        }
+
+        .product-info .price {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 15px;
+            color: #333;
+            text-transform: uppercase;
+            /* Texto en mayúsculas como "Buy 115 €" */
+        }
+
+        /* Miniaturas de Productos */
+        .product-miniatures {
+            margin: 0px 60px;
+            padding: px;
+            background-color: #fff;
+
+            text-align: center;
+
+
+        }
+
+        .product-miniatures h2 {
+            font-size: 24px;
+            /* Tamaño destacado */
+            letter-spacing: 3px;
+            /* Espaciado amplio */
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .miniature-grid {
+            background-color: white;
+            padding: 20px;
+            /* Opcional, ajusta el espacio si lo necesitas */
+            margin-left: 5%;
+        }
+
+        .miniature {
+            background-image: linear-gradient(to right, #b4b1b1bb 50%, rgba(180, 177, 177, 0.8) 75%, white 100%);
+            border: 1px solid #ddd;
+            /* Borde opcional para la miniatura */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            padding: 40px;
+            /* Espaciado interno */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra suave */
+        }
+
+
+        .miniature:hover {
+            transform: translateY(-10px);
+            /* Hace que la miniatura se mueva hacia arriba */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            /* Agrega sombra para un efecto más llamativo */
+        }
+
+        .miniature img {
+            max-width: 100%;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+            background: none;
+            /* Elimina cualquier fondo */
+            border: none;
+            /* Elimina bordes alrededor de la imagen */
+            box-shadow: none;
+            /* Evita cualquier sombra alrededor */
+        }
+
+
+        .miniature p {
+            font-size: 15px;
+            margin-top: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+
+        /* Cuadrícula de Productos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+
+        }
+
+        .product-grid article {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* Pie de Página */
+        footer {
+  background-color: #ffffff;
+  padding: 10px 10px;
+  display: flex; /* Usamos flexbox para la disposición */
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; /* Alineación vertical al centro */
+  flex-wrap: nowrap;
+  margin-left: 0; /* O el margen que necesites */
 }
 
-.product-grid article {
-    padding: 15px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
+.language-selector {
+  white-space: wrap; /* Evita que el texto se envuelva */
 
-/* Pie de Página */
-footer {
-    background-color: #ffffff; /* Fondo blanco */
-    text-align: center; /* Centra los elementos del footer */
-    padding: 10px 0; /* Espaciado interno */
 }
 
 footer ul {
-    list-style: none; /* Elimina los puntos predeterminados de la lista */
-    padding: 0;
-    margin: 0;
-    display: inline-flex; /* Coloca los elementos en línea */
-    gap: 5px; /* Espaciado entre los elementos */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Para que los items de la lista estén en línea */
+  gap: 10px; /* Espacio entre los enlaces */
+  white-space: nowrap; /* Evita que los enlaces se envuelvan */
 }
 
-footer ul li {
-    position: relative;
+footer ul li::after {
+  content: " / ";
+  color: #0000ff;
+  margin-left: 5px;
 }
 
-footer ul li:not(:last-child)::after {
-    content: " / "; /* Agrega un slash como separador */
-    color: #0000ff; /* Azul del slash */
-    margin-left: 5px;
+footer ul li:last-child::after {
+  content: ""; /* No mostrar el slash en el último elemento */
 }
 
 footer ul a {
-    text-decoration: none; /* Elimina el subrayado */
-    color: #0000ff; /* Texto azul */
-    padding: 5px 10px; /* Espaciado interno */
-    background-color: #ffffff; /* Fondo blanco */
-    border-radius: 5px; /* Bordes redondeados */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Efecto suave */
+  text-decoration: none;
+  color: #0000ff;
+  padding: 5px 0; /* Ajusta el padding vertical */
+  background-color: transparent; /* Para que no tenga fondo */
+  border-radius: 0; /* Para que no tenga bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 footer ul a:hover {
-    background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
-    color: #333333; /* Cambia el color del texto */
+  background-color: #f0f0f0;
+  color: #333333;
 }
 
-.buy-button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+footer .dbhref {
+  display: flex;
+  justify-content: center; /* Centra el texto si es necesario */
+  margin: 0;
+  align-items: center;
+  white-space: wrap; /* Evita que el texto se envuelva */
 }
-.buy-button:hover {
-    background-color: #555;
-}
-
-.miniature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Dos columnas iguales */
-    gap: 20px; /* Espaciado entre las miniaturas */
-    justify-content: center;
-
-}
-.filter-btn {
-    background-color:white;
-    color: #000000;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+footer .Diassemana{
+ 
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  white-space: nowrap;
+  padding-right: 40px; /* Añade un relleno derecho de 20 píxeles (ajusta el valor según necesites) */
 }
 
-.filter-btn:hover {
-    background-color: #bbb;
-    transform: scale(1.1);
-}
 
-.filter-btn.active {
-    background-color: #000000;
-    color: #fff;
-}
-.buy-button {
-    color: #0931fa; /* Cambia el color de la letra, en este caso, naranja */
-    background-color: white;
-    border: 1px solid blue;
-    padding: 10px 20px; /* Tamaño del botón */
-    font-size: 16px; /* Tamaño del texto */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    font-weight: bold; /* Hace el texto más grueso */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Animación al pasar el mouse */
-}
+        .buy-button {
+            background-image: linear-gradient(to right, #b4b1b1bb 50%, rgba(180, 177, 177, 0.8) 75%);
+            color: #fff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
 
-.buy-button:hover {
-    background-color: #555555; /* Cambia el color de fondo al pasar el mouse */
-    color: #ffffff; /* Cambia el color del texto al pasar el mouse */
-}
-details {
-    margin-top: 50px;/* Ajusta la distancia hacia abajo */
+        .buy-button:hover {
+            background-color: #555;
+        }
 
-    font-size: 16px; /* Cambia el tamaño del texto si es necesario */
-padding-top: 20px;
-position: relative; /* Asegura que los movimientos sean relativos a su posición */
-transition: transform 0.3s ease, color 0.3s ease; /* Animación suave al pasar el mouse */
-}
-details:hover {
-    transform: translateY(-5px); /* Mueve el elemento hacia arriba */
-    color: #007BFF; /* Cambia el color del texto cuando se interactúa */
-}
-.slash {
-    color: blue; /* Cambia el color del slash a azul */
-    font-weight: bold; /* Opcional: haz que se vea más destacado */
-}
-
-        @media (min-width: 530px) and (max-width: 1000px) {
-            .miniature-grid {
-                grid-template-columns: repeat(1, 1fr);
+        .miniature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Dos columnas iguales */
+            gap: 20px;
+            /* Espaciado entre las miniaturas */
+            justify-content: center;
 
         }
-        .miniature p {
-    font-size: 15px;
-    margin-top: 8px;
-    color: #333;
-    font-weight: 500;
-}
-.miniature-grid {
-                grid-template-columns: repeat(2, 1fr);
 
-
-                }
-       .product-miniatures{
-                flex-grow: initial;
-                }
-        .featured-product{
-                padding-left: 0px;
-                align-items: normal;
+        .filter-btn {
+            background-color: white;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .product-info{
-                margin: 0px;;
-                position: relative;
-    color: rgb(0, 0, 0); /* Asegura que el texto sea visible sobre la imagen */
-    gap: 0px; /* Espacio entre la imagen y el texto */
-    text-align: left;
-    margin-left: 2%;
 
+        .filter-btn:hover {
+            background-color: #bbb;
+            transform: scale(1.1);
         }
-        .miniature p {
-    margin-left: 0px;
-    font-size: 5px;
-}
-        .product-image{
-                text-align: left;
-    top: 0;
-    left: 40%;
-    max-width: 300px; /* Ajusta el tamaño de la imagen */
-    height: 100%;
-    display: block; /* Asegura que la imagen no se alinee con el texto */
-  margin: 0;}
-    .product-info h1{
-        position: relative;
-    font-size: 3rem; /* Ajusta el tamaño del texto */
 
-    }
-    .details{
+        .filter-btn.active {
+            background-color: #000000;
+            color: #fff;
+        }
 
+        .buy-button {
+            color: #0931fa;
+            /* Cambia el color de la letra, en este caso, naranja */
+            background-color: white;
+            border: 1px solid blue;
+            padding: 10px 20px;
+            /* Tamaño del botón */
+            font-size: 16px;
+            /* Tamaño del texto */
+            cursor: pointer;
+            /* Cambia el cursor al pasar sobre el botón */
+            font-weight: bold;
+            /* Hace el texto más grueso */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Animación al pasar el mouse */
+        }
+
+        .buy-button:hover {
+            background-color: #555555;
+            /* Cambia el color de fondo al pasar el mouse */
+            color: #ffffff;
+            /* Cambia el color del texto al pasar el mouse */
+        }
+
+        details {
+            margin-top: 50px;
+            /* Ajusta la distancia hacia abajo */
 
             font-size: 16px;
-    }
-   /* Categorías */
-   .categories{
-    position: relative;
-    align-items: center;
-    flex-wrap: nowrap;
+            /* Cambia el tamaño del texto si es necesario */
+            padding-top: 20px;
+            position: relative;
+            /* Asegura que los movimientos sean relativos a su posición */
+            transition: transform 0.3s ease, color 0.3s ease;
+            /* Animación suave al pasar el mouse */
+        }
+
+        details:hover {
+            transform: translateY(-5px);
+            /* Mueve el elemento hacia arriba */
+            color: #007BFF;
+            /* Cambia el color del texto cuando se interactúa */
+        }
+
+        .slash {
+            color: blue;
+            /* Cambia el color del slash a azul */
+            font-weight: bold;
+            /* Opcional: haz que se vea más destacado */
+        }
+
+        @media (min-width: 530px) and (max-width: 1000px) {
+  .miniature-grid {
+    grid-template-columns: repeat(2, 1fr); /* Mantenemos 2 columnas */
+    margin-left: 0; /* Elimina el margen izquierdo negativo */
+    padding: 20px; /* Asegura un padding adecuado */
+    height: auto; /* Ajusta la altura automáticamente */
   }
+
+  .miniature p {
+    font-size: 1rem; /* Aumenta un poco el tamaño de la fuente */
+  }
+
+  .product-miniatures {
+    margin: 20px; /* Añade márgenes más consistentes */
+  }
+
+  .featured-product {
+    padding: 20px; /* Añade padding a la sección destacada */
+    align-items: center; /* Vuelve a centrar verticalmente */
+    flex-direction: row; /* Asegura que la imagen y el texto estén en fila */
+  }
+
+  .product-info {
+    margin: 20px; /* Márgenes consistentes */
+    text-align: left;
+    margin-left: 2%; /* Mantenemos un pequeño margen izquierdo */
+  }
+
+  .product-image {
+    left: auto; /* Elimina la posición absoluta y el left */
+    max-width: 40%; /* Ajusta el ancho de la imagen */
+    height: auto;
+    margin: 20px; /* Márgenes consistentes */
+  }
+
+  .product-info h2 {
+    font-size: 2rem; /* Ajusta el tamaño del título */
+  }
+
+  .details {
+    font-size: 1rem;
+  }
+
+  .categories {
+    margin: 20px; /* Márgenes consistentes */
+  }
+
   .categories ul {
-    flex-direction: row; /* Volvemos a filas */
-    justify-content: center; /* Centra las categorías horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    gap: 5px; /* Reduzco el espacio entre botones */
-    padding: 10px; /* Reduzco el padding */
-    flex-wrap: wrap; /* Permite que las categorías pasen a la siguiente línea si no caben */
-    height: 100%;
+    justify-content: center; /* Mantenemos las categorías centradas */
+    gap: 10px; /* Aumentamos un poco el espacio entre botones */
+    padding: 15px;
   }
 
   .categories .category {
-    font-size: 12px;
-    padding: 6px 10px;
-    text-align: center;
-    box-sizing: border-box;
-    margin-bottom: 5px;
+    font-size: 14px; /* Ajustamos el tamaño de la fuente de los botones */
+    padding: 8px 12px;
   }
-    .footer a{
-        font-size: 15px;
-    }
-        .contenido{
-        height: 100%;
-        }
 
-        }
+  footer {
+    margin-left: 0; /* Elimina el margen izquierdo negativo */
+    padding: 15px; /* Añade padding al footer */
+  }
+
+  footer ul a {
+    font-size: 0.9rem;
+  }
+}
+
         @media (min-width: 450px) and (max-width: 529px) {
             .miniature-grid {
                 grid-template-columns: repeat(1, 1fr);
 
-        }
-        .miniature p {
-    font-size: 15px;
-    margin-top: 8px;
-    color: #333;
-    font-weight: 500;
-}
-.miniature-grid {
+            }
+
+            .miniature p {
+                font-size: 15px;
+                margin-top: 8px;
+                color: #333;
+                font-weight: 500;
+            }
+
+            .miniature-grid {
                 grid-template-columns: repeat(2, 1fr);
                 margin-left: -22%;
                 height: 50%;
                 padding: 10%;
-                }
-       .product-miniatures{
+            }
+
+            .product-miniatures {
                 flex-grow: initial;
-                }
-        .featured-product{
+            }
+
+            .featured-product {
                 padding-left: 0px;
                 align-items: normal;
-        }
-        .product-info{
+            }
+
+            .product-info {
                 margin: 5%;
-    text-align: left;
-    margin-left: 10px;
+                text-align: left;
+                margin-left: 10px;
 
 
-        }
-        .miniature p {
-    margin-left: 0px;
-    font-size: 5px;
-}
-        .product-image{
+            }
+
+            .miniature p {
+                margin-left: 0px;
+                font-size: 5px;
+            }
+
+            .product-image {
                 text-align: left;
 
-    left: 40%;
-    max-width: 300px; /* Ajusta el tamaño de la imagen */
-    height: 50%;
-    margin:10%;
-    margin-left: -65%;
-    margin-top: 25%;
-    display: relative; /* Asegura que la imagen no se alinee con el texto */
+                left: 40%;
+                max-width: 300px;
+                /* Ajusta el tamaño de la imagen */
+                height: 50%;
+                margin: 10%;
+                margin-left: -65%;
+                margin-top: 25%;
+                display: relative;
+                /* Asegura que la imagen no se alinee con el texto */
+            }
+
+            .product-info h1 {
+                position: relative;
+                font-size: 3rem;
+                /* Ajusta el tamaño del texto */
+                margin-left: -20%;
+
+            }
+
+            .details {
+
+
+                font-size: 16px;
+            }
+
+            /* Categorías */
+            .categories {
+                margin: 10px 0;
+                margin-left: -20%;
+            }
+
+            .categories ul {
+
+                display: flex;
+                /* Asegúrate de tener esto */
+                flex-direction: row;
+                /* Esto es lo importante para las filas */
+                justify-content: center;
+                /* Centra las categorías */
+                align-items: center;
+                /* Centra verticalmente */
+                gap: 5px;
+                padding: 10px;
+                flex-wrap: wrap;
+                /* Permite que se envuelvan si no caben */
+            }
+
+            .categories .category {
+                font-size: 12px;
+                padding: 6px 10px;
+                text-align: center;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+            }
+
+            .footer a {
+                font-size: 15px;
+
+            }
+
+            footer {
+                margin-left: -20%;
+                /* Ajusta este valor para mover el footer más o menos a la izquierda */
+                padding: 0;
+            }
         }
-    .product-info h1{
-        position: relative;
-    font-size: 3rem; /* Ajusta el tamaño del texto */
-    margin-left: -20%;
 
-    }
-    .details{
+        @media (min-width: 300px) and (max-width: 529px) {
+  /* Estilos para el encabezado */
+  header {
+    padding: 10px 20px; /* Reducimos el padding del encabezado */
+    flex-direction: column; /* Apilamos los elementos del header */
+    align-items: center; /* Centramos los elementos del header */
+  }
 
+  .left-header,
+  .right-header {
+    width: 100%;
+    justify-content: space-between; /* Espacio entre los elementos de cada lado */
+    margin-bottom: 10px; /* Espacio entre las filas del header */
+  }
 
-            font-size: 16px;
-    }
-   /* Categorías */
- .categories {
+  .menu-icon {
+    margin-right: 0; /* Eliminamos el margen derecho */
+  }
+
+  .logo {
+    font-size: 1.5rem; /* Reducimos el tamaño del logo */
+  }
+
+  .language-selector {
+    margin-left: 0; /* Eliminamos el margen izquierdo */
+    margin-right: 0; /* Eliminamos el margen derecho */
+  }
+
+  /* Estilos para la sección de producto destacado */
+  .featured-product {
+    flex-direction: column; /* Apilamos la información y la imagen */
+    align-items: center; /* Centramos los elementos */
+    padding: 20px;
+    text-align: center;
+  }
+
+  .product-info {
+    margin: 20px 0;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .product-info h2 {
+    font-size: 1.8rem; /* Ajustamos el tamaño del subtítulo */
+  }
+
+  .product-info p {
+    font-size: 1rem;
     margin: 10px 0;
-    margin-left: -20%;
+  }
+
+  .product-info .buy-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-top: 15px;
+  }
+
+  .product-info details {
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+
+  .product-image {
+    max-width: 90%;
+    height: auto;
+    margin: 20px auto; /* Centramos la imagen horizontalmente */
+    display: block;
+    text-align: center;
+  }
+
+  /* Estilos para las categorías */
+  .categories {
+    margin: 20px 0;
+    margin-left: 0; /* Eliminamos el margen izquierdo */
   }
 
   .categories ul {
-
-    display: flex; /* Asegúrate de tener esto */
-    flex-direction: row; /* Esto es lo importante para las filas */
-    justify-content: center; /* Centra las categorías */
-    align-items: center; /* Centra verticalmente */
-    gap: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     padding: 10px;
-    flex-wrap: wrap; /* Permite que se envuelvan si no caben */
+    flex-wrap: wrap; /* Permitimos que los botones se envuelvan */
   }
 
   .categories .category {
-    font-size: 12px;
+    font-size: 0.9rem; /* Reducimos aún más el tamaño de la fuente */
     padding: 6px 10px;
-    text-align: center;
-    box-sizing: border-box;
     margin-bottom: 5px;
   }
-    .footer a{
-        font-size: 15px;
 
-    }
-
-    footer {
-    margin-left: -20%; /* Ajusta este valor para mover el footer más o menos a la izquierda */
-    padding: 0;
+  /* Estilos para las miniaturas de productos */
+  .product-miniatures {
+    margin: 20px;
   }
-}
 
-
-@media (min-width: 300px) and (max-width: 449px) {
-
-/* Estilos para el encabezado */
-.header h1 {
- margin-left: 0; /* Eliminamos el margen izquierdo */
- text-align: center; /* Centramos el título */
- font-size: 1.8rem; /* Ajustamos el tamaño de la fuente */
- padding: 10px; /* Añadimos algo de padding */
-}
-
-/* Estilos para la sección de producto destacado */
-.featured-product {
- display: flex;
- flex-direction: column; /* Apilamos la información y la imagen */
- align-items: center; /* Centramos los elementos horizontalmente */
- padding: 20px; /* Añadimos padding alrededor */
- text-align: center; /* Centramos el texto dentro de la sección */
-}
-
-.product-info {
- margin: 20px 0; /* Espacio vertical */
- text-align: center; /* Centramos el texto */
- margin-left: 0; /* Eliminamos margen izquierdo */
-}
-
-.product-info h2 {
- font-size: 1.5rem; /* Ajustamos el tamaño del subtítulo */
-}
-
-.product-info p {
- font-size: 1rem; /* Ajustamos el tamaño del párrafo */
- margin: 10px 0;
-}
-
-.product-info .buy-button {
- font-size: 1rem; /* Ajustamos el tamaño del botón */
- padding: 10px 20px;
- margin-top: 15px;
-}
-
-.product-info details {
- font-size: 0.9rem; /* Ajustamos el tamaño de los detalles */
- margin-top: 20px;
-}
-
-.product-image {
- max-width: 90%; /* La imagen ocupa un porcentaje del ancho */
- height: auto;
- margin-left: -10%; /* Centramos la imagen y añadimos margen superior */
- display: block;
- text-align: center; /* Aseguramos que el contenedor esté centrado */
-}
-
-/* Estilos para las categorías */
-.categories {
- margin: 20px 0;
-}
-
-.categories ul {
- display: flex;
- flex-direction: row; /* Mostramos las categorías en fila */
- justify-content: center; /* Centramos las categorías */
- align-items: center;
- gap: 10px; /* Espacio entre los botones de categoría */
- padding: 10px;
- flex-wrap: wrap; /* Permite que las categorías pasen a la siguiente línea */
-}
-
-.categories .category {
- font-size: 1rem; /* Ajustamos el tamaño de la fuente de los botones */
- padding: 8px 12px;
- margin-bottom: 5px;
-}
-
-/* Estilos para las miniaturas de productos */
-.product-miniatures {
- margin: 20px; /* Añadimos margen alrededor de la sección */
-}
-
-.miniature-grid {
- grid-template-columns: repeat(1, 1fr); /* Una sola columna para pantallas pequeñas */
- gap: 20px;
-}
-
-.miniature {
- padding: 15px;
- text-align: center;
-}
-
-.miniature img {
- max-width: 100%;
- height: auto;
- max-height: 200px; /* Mantenemos una altura máxima */
- margin-bottom: 10px;
-}
-
-.miniature p {
- font-size: 1rem; /* Tamaño de fuente para la descripción */
- margin-top: 5px;
-}
-
-/* Estilos para el pie de página */
-footer {
- text-align: center; /* Centramos el texto del pie de página */
- padding: 20px;
- margin-left: 0; /* Eliminamos el margen izquierdo */
-}
-
-footer ul {
- display: flex;
- flex-direction: row;
- justify-content: center;
- align-items: center;
- gap: 15px;
- padding: 0;
- list-style: none;
-}
-
-footer ul li::after {
- content: " / ";
- color: #0000ff;
- margin-left: 8px;
-}
-
-footer ul li:last-child::after {
- content: "";
-}
-
-footer ul a {
- font-size: 0.9rem; /* Ajustamos el tamaño de la fuente de los enlaces */
- padding: 5px 10px;
-}
-
-
-body {
- font-size: 16px; /* Aseguramos un tamaño de fuente base razonable */
-}
-
-.container {
- max-width: 100%; /* El contenedor ocupa todo el ancho en pantallas pequeñas */
- padding: 0 15px; /* Añadimos un poco de padding lateral al contenedor */
-}
-}
-
-.left-header, .right-header {
- display: flex; /* Para alinear los elementos internos horizontalmente */
- align-items: center;
-}
-
-.menu-icon {
-    font-size: 1.5em;
-    margin-right: 80px; /* Aumenta el margen derecho para separar el icono de "Back" */
-}
-
-.back-text {
- margin-right: 20px;
-}
-
-.logo {
- margin: 0; /* Elimina el margen predeterminado del h1 */
- font-size: 2em; /* Ajusta el tamaño del logo */
-}
-
-.cart-text {
-    margin-right: 5px;
-    white-space: nowrap; /* Evita el salto de línea */
-}
-
-.user-icon {
- font-size: 1.5em; /* Ajusta el tamaño del icono de usuario */
- margin-left: 10px;
-}
-
-/* Opcional: Estilos para el número del carrito */
-.cart-count {
- font-weight: bold;
-}
-
-.current-language {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.language-arrow {
-    font-size: 0.8em;
-    margin-left: 5px;
-}
-
-.language-selector {
-    display: flex;
-    align-items: center;
-    margin-left: 80px; /* Añade un margen izquierdo para separarlo del carrito */
-    position: relative;
-}
-.right-header {
-    display: flex;
-    align-items: center;
-}
-
-/* Sección de Producto Destacado */
-.featured-product {
-    display: flex;
-    align-items: center; /* Alinea verticalmente la imagen y la información */
-    gap: 15px;
+  .miniature-grid {
+    grid-template-columns: repeat(1, 1fr); /* Una sola columna para móviles */
+    gap: 20px;
+    margin-left: 0; /* Eliminamos el margen izquierdo */
     padding: 20px;
-    background-color: #fff;
-    margin-top: 20px;
-    flex-direction: row; /* Mantiene la disposición en fila para imagen e info */
-}
+  }
 
-.product-info {
-    text-align: left;
-    margin: 50px;
-    padding: 0;
-    border: auto;
-    flex-grow: 1; /* Permite que la información ocupe el espacio restante */
-}
+  .miniature {
+    padding: 15px;
+    text-align: center;
+  }
 
-.product-image {
-    margin-left: -29px;
+  .miniature img {
     max-width: 100%;
     height: auto;
     max-height: 200px;
-    margin: -30px;
-    display: block;
-}
+    margin-bottom: 10px;
+  }
 
-.details-steps-container {
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    margin-top: 80px; /* Añade espacio superior para separarlo */
-    display: flex; /* Para alinear los elementos internos (product details y 01-04) */
-    align-items: center; /* Alinea verticalmente los elementos internos */
-    /* justify-content: space-between; */ /* Comenta o elimina esto para alinear a la izquierda */
-}
+  .miniature p {
+    font-size: 0.9rem; /* Reducimos el tamaño de la fuente */
+    margin-top: 5px;
+  }
 
-.product-steps {
-    display: flex;
-    align-items: center;
-    margin-left: 149%; /* Espacio entre "product details" y "01-04" */
-    margin-top: 15%;
-}
-
-.step-separator {
-    border: none;
-    border-top: 1px solid #ccc;
-    width: 20px;
-    margin: 0 10px;
-}
-
-.step-arrow {
-    font-size: 1.2em;
-    color: blue;
-    margin-left: 10px;
-}
-
-.details-steps-container > details {
-    width: auto; /* Ajusta el ancho según el contenido */
-}
-
-.details-steps-container > details > summary {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    white-space: nowrap; /* Evita que el texto se envuelva */
-}
-.filter-x {
-    font-size: 1em; /* Ajusta el tamaño según necesites */
-    color: #888; /* Un color más claro o grisáceo para menos visibilidad */
-    margin-right: 5px; /* Espacio entre la 'x' y el texto */
-}
-
-/* Estilos para la nueva estructura de las miniaturas */
-.miniature-description {
-    font-size: 15px;
-    margin-top: 8px;
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 5px; /* Añade un poco de espacio debajo de la descripción */
-    white-space: nowrap; /* Evita que el precio salte a la siguiente línea si el nombre es muy largo */
-    display: flex; /* Habilita Flexbox para alinear los elementos internos */
-    justify-content: space-between; /* Coloca el primer elemento hijo a la izquierda y el último a la derecha */
-    align-items: center; /* Alinea verticalmente los elementos en el centro (opcional) */
-}
-
-.miniature-description .product-name {
-    text-align: left; /* Asegura que el nombre esté alineado a la izquierda */
-}
-
-.miniature-description .product-price {
-    text-align: right; /* Asegura que el precio esté alineado a la derecha */
-}
-
-.miniature .miniature-category {
- font-size: 15px;
-color: #777 !important; /* Cambiamos el color a grisáceo y mantenemos !important */
-font-weight: 500;
- margin: 0;
-  text-align: left !important; /* Cambiamos la alineación a la izquierda y mantenemos !important */
-}
-.footer-links {
-    flex-grow: 1; /* Permite que este contenedor se expanda para ocupar el espacio */
-    text-align: center; /* Centra el contenido dentro de este contenedor */
+  /* Estilos para el pie de página */
+  footer {
+    text-align: center;
+    padding: 20px;
+    margin-left: 0;
+    flex-direction: column; /* Apilamos los elementos del footer */
   }
 
   footer ul {
-    list-style-type: none; /* Elimina los puntos de la lista */
-    padding: 0; /* Elimina el relleno predeterminado de la lista */
-    margin: 0; /* Elimina el margen predeterminado de la lista */
-    display: inline-block; /* Permite centrar el bloque de la lista */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap; /* Permitimos que los enlaces se envuelvan */
   }
 
-  footer ul li {
-    display: inline; /* Coloca los elementos de la lista en línea */
-    margin-right: 15px; /* Agrega un margen derecho entre los elementos de la lista */
+  footer ul li::after {
+    content: " / ";
+    color: #0000ff;
+    margin-left: 5px;
   }
 
-  footer ul li:last-child {
-    margin-right: 0; /* Elimina el margen derecho del último elemento de la lista */
+  footer ul li:last-child::after {
+    content: "";
   }
 
-  .footer-right {
-    margin-left: -50%; /* Empuja este elemento hacia la derecha */
+  footer ul a {
+    font-size: 0.8rem; /* Reducimos el tamaño de la fuente de los enlaces */
+    padding: 5px 10px;
   }
 
-</style>
+  footer .dbhref {
+    margin-top: 10px; /* Añadimos un margen superior */
+    text-align: center; /* Centramos el texto */
+  }
+
+  .container {
+    padding: 0 15px; /* Ajustamos el padding lateral del contenedor */
+  }
+}
+
+        .left-header,
+        .right-header {
+            display: flex;
+            /* Para alinear los elementos internos horizontalmente */
+            align-items: center;
+        }
+
+        .menu-icon {
+            font-size: 1.5em;
+            margin-right: 80px;
+            /* Aumenta el margen derecho para separar el icono de "Back" */
+        }
+
+        .back-text {
+            margin-right: 20px;
+        }
+
+        .logo {
+            margin: 0;
+            /* Elimina el margen predeterminado del h1 */
+            font-size: 2em;
+            /* Ajusta el tamaño del logo */
+        }
+
+        .cart-text {
+            margin-right: 5px;
+            white-space: nowrap;
+            /* Evita el salto de línea */
+        }
+
+        .user-icon {
+            font-size: 1.5em;
+            /* Ajusta el tamaño del icono de usuario */
+            margin-left: 10px;
+        }
+
+        /* Opcional: Estilos para el número del carrito */
+        .cart-count {
+            font-weight: bold;
+        }
+
+        .current-language {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .language-arrow {
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+            /* Añade un margen izquierdo para separarlo del carrito */
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .right-header {
+            display: flex;
+            align-items: center;
+        }
+
+
+
+        .details-steps-container {
+            width: 100%;
+            /* Asegura que ocupe todo el ancho */
+            margin-top: 80px;
+            /* Añade espacio superior para separarlo */
+            display: flex;
+            /* Para alinear los elementos internos (product details y 01-04) */
+            align-items: center;
+            /* Alinea verticalmente los elementos internos */
+            /* justify-content: space-between; */
+            /* Comenta o elimina esto para alinear a la izquierda */
+        }
+
+        .product-steps {
+            display: flex;
+            align-items: center;
+            margin-left: 200%;
+            /* Espacio entre "product details" y "01-04" */
+            margin-top: 15%;
+        }
+
+        .step-separator {
+            border: none;
+            border-top: 1px solid #ccc;
+            width: 20px;
+            margin: 0 10px;
+        }
+
+        .step-arrow {
+            font-size: 1.2em;
+            color: blue;
+            margin-left: 10px;
+        }
+
+        .details-steps-container>details {
+            width: auto;
+            /* Ajusta el ancho según el contenido */
+        }
+
+        .details-steps-container>details>summary {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            white-space: nowrap;
+            /* Evita que el texto se envuelva */
+        }
+
+        .filter-x {
+            font-size: 1em;
+            /* Ajusta el tamaño según necesites */
+            color: #888;
+            /* Un color más claro o grisáceo para menos visibilidad */
+            margin-right: 5px;
+            /* Espacio entre la 'x' y el texto */
+        }
+
+        /* Estilos para la nueva estructura de las miniaturas */
+        .miniature-description {
+            font-size: 15px;
+            margin-top: 8px;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+            /* Añade un poco de espacio debajo de la descripción */
+            white-space: nowrap;
+            /* Evita que el precio salte a la siguiente línea si el nombre es muy largo */
+            display: flex;
+            /* Habilita Flexbox para alinear los elementos internos */
+            justify-content: space-between;
+            /* Coloca el primer elemento hijo a la izquierda y el último a la derecha */
+            align-items: center;
+            /* Alinea verticalmente los elementos en el centro (opcional) */
+        }
+
+        .miniature-description .product-name {
+            text-align: left;
+            /* Asegura que el nombre esté alineado a la izquierda */
+        }
+
+        .miniature-description .product-price {
+            text-align: right;
+            /* Asegura que el precio esté alineado a la derecha */
+        }
+
+        .miniature .miniature-category {
+            font-size: 15px;
+            color: #777 !important;
+            /* Cambiamos el color a grisáceo y mantenemos !important */
+            font-weight: 500;
+            margin: 0;
+            text-align: left !important;
+            /* Cambiamos la alineación a la izquierda y mantenemos !important */
+        }
+        .footer p.language-selector  {
+  white-space: nowrap; /* Evita que el texto se envuelva */
+}
+    </style>
 
 
 <body>
@@ -883,10 +995,10 @@ font-weight: 500;
             <section class="featured-product">
                 <div class="product-info">
                     <h2><span class="slash">/</span> Sunglasses</h2>
-                    <p>Black sunglasses are a classic of fashion.  
-                        They offer style and effective sun protection.  
-                        Their dark color is elegant and versatile.  
-                        Perfect for any occasion and look.  
+                    <p>Black sunglasses are a classic of fashion.
+                        They offer style and effective sun protection.
+                        Their dark color is elegant and versatile.
+                        Perfect for any occasion and look.
                         An essential accessory in Medellín.</p>
 
                     <button class="buy-button">Buy 115 €</button>
@@ -894,7 +1006,9 @@ font-weight: 500;
                     <div class="details-steps-container">
                         <details>
                             <summary id="details-text">Product details<span class="detaills">▼</span></summary>
-                            <p>The black sunglasses have a shiny plastic frame and dark lenses that provide total protection against sunlight. The thin and comfortable temples feature black metal details, adding a touch of luxury and modernity.</p>
+                            <p>The black sunglasses have a shiny plastic frame and dark lenses that provide total
+                                protection against sunlight. The thin and comfortable temples feature black metal
+                                details, adding a touch of luxury and modernity.</p>
                         </details>
                         <div class="product-steps">
                             <span>01</span>
@@ -909,7 +1023,8 @@ font-weight: 500;
                     </script>
 
                 </div>
-                <img class="product-image" src="https://m.media-amazon.com/images/I/41IJNmxPGsL._AC_UY1000_.jpg" alt="Gafas de Sol">
+                <img class="product-image" img src="SUNGLASSES.png"
+                    alt="Gafas de Sol">
             </section>
             <nav class="categories">
                 <ul>
@@ -922,92 +1037,107 @@ font-weight: 500;
 
 
             <section id="miniatures" class="product-miniatures">
-                                    <div class="miniature-grid">
-                        <div class="miniature">
-                            <img src="https://http2.mlstatic.com/D_NQ_NP_767841-MLM69578073253_052023-O.webp" alt="cinto">
-                            <p class="miniature-description">
-                                <span class="product-name">Black leather belt</span>
-                                <span class="product-price">-95 €</span>
-                            </p>
-                            <p class="miniature-category">Fashion</p>
-                        </div>
-                        <div class="miniature">
-                            <img src="https://s1.kuantokusta.pt/img_upload/produtos_comunicacoes/1315507_2_avizar-bolsa-smartphone-ate-6-6-couro-italiano-interior-soft-touch-slim-preto-slim-flo-2x2l.jpg" alt="Bolsa smarphone">
-                            <p class="miniature-description">
-                                <span class="product-name">Smartphone bag</span>
-                                <span class="product-price">-55 €</span>
-                            </p>
-                            <p class="miniature-category">Every day</p>
-                        </div>
-                        <div class="miniature">
-                            <img src="https://tse3.mm.bing.net/th?id=OIP.FE-tdV0iuq8zjr-wxlLySAHaFK&pid=Api&P=0&h=180" alt="Guantes de cuero">
-                            <p class="miniature-description">
-                                <span class="product-name">Leather gloves</span>
-                                <span class="product-price">-120 €</span>
-                            </p>
-                            <p class="miniature-category">Fashion</p>
-                        </div>
-                        <div class="miniature">
-                            <img src="https://http2.mlstatic.com/D_Q_NP_953595-MLM45721263360_042021-AB.webp" alt="Memoria">
-                            <p class="miniature-description">
-                                <span class="product-name">Flash Drive</span>
-                                <span class="product-price">-15 €</span>
-                            </p>
-                            <p class="miniature-category">Every day</p>
-                        </div>
-                        <div class="miniature">
-                            <img src="https://www.zerca.com/medias/loisOsborn305919-2-1200Wx1200H?context=bWFzdGVyfGltYWdlc3wxNzM5MTh8aW1hZ2UvanBlZ3xpbWFnZXMvaGZlL2g0Ny84OTkwMzQxMjM0NzE4LmpwZ3xmNzQyMTkzODM4MjBhMDVkZDkwMjMzNDBlZmFhNjFmYTc3ZmMzZGJiOTFkYWI4M2I5YmQxMzNmNTVlYTUwNjdl" alt="Bolso de Hombre">
-                            <p class="miniature-description">
-                                <span class="product-name">Black courrier</span>
-                                <span class="product-price">-395 €</span>
-                            </p>
-                            <p class="miniature-category">Fashion</p>
-                        </div>
-                        <div class="miniature">
-                            <img src="https://static.grainger.com/rp/s/is/image/Grainger/1DAX1_AS01?$glgmain$" alt="Bolso de lona negra">
-                            <p class="miniature-description">
-                                <span class="product-name">Black Duffle</span>
-                                <span class="product-price">-420 €</span>
-                            </p>
-                            <p class="miniature-category">Fashion</p>
-                        </div>
-                        <div class="miniature">
-                            <img src="https://www.omega-store.co/wp-content/uploads/2023/07/AGI7939.png" alt="Funda computador">
-                            <p class="miniature-description">
-                                <span class="product-name">Lap Top Holster</span>
-                                <span class="product-price">-195 €</span>
-                            </p>
-                            <p class="miniature-category">Every day</p>
-                        </div>
-                        <div class="miniature">
-                            <img src="https://image.torob.com/base/images/Xp/uD/XpuDTQeMkI25DOxI.jpg_/560x560.webp" alt="Bolso de trabajo">
-                            <p class="miniature-description">
-                                <span class="product-name">black workbag</span>
-                                <span class="product-price">-395 €</span>
-                            </p>
-                            <p class="miniature-category">Fashion</p>
-                        </div>
-                         <div class="miniature">
-                            <img src="https://purepng.com/public/uploads/large/purepng.com-black-walletwalletsmallflat-casecard-slotsleatherblack-1421526416647wea3r.png" alt="Billetera negra">
-                            <p class="miniature-description">
-                                <span class="product-name"> Wallet</span>
-                                <span class="product-price">-95 €</span>
-                            </p>
-                            <p class="miniature-category">Every day</p>
-                        </div>
+                <div class="miniature-grid">
+                    <div class="miniature">
+                        <img src="BLACK LEATHER BELT.png" alt="cinto">
+                        <p class="miniature-description">
+                            <span class="product-name">Black leather belt</span>
+                            <span class="product-price">-95 €</span>
+                        </p>
+                        <p class="miniature-category">Fashion</p>
                     </div>
+                    <div class="miniature">
+                        <img src="SMARPHONE BAG.png"
+                            alt="Bolsa smarphone">
+                        <p class="miniature-description">
+                            <span class="product-name">Smartphone bag</span>
+                            <span class="product-price">-55 €</span>
+                        </p>
+                        <p class="miniature-category">Every day</p>
+                    </div>
+                    <div class="miniature">
+                        <img src="LEATHER GLOBES.png"
+                            alt="Guantes de cuero">
+                        <p class="miniature-description">
+                            <span class="product-name">Leather gloves</span>
+                            <span class="product-price">-120 €</span>
+                        </p>
+                        <p class="miniature-category">Fashion</p>
+                    </div>
+                    <div class="miniature">
+                        <img src="FLASH DRIVE.png" alt="Memoria">
+                        <p class="miniature-description">
+                            <span class="product-name">Flash Drive</span>
+                            <span class="product-price">-15 €</span>
+                        </p>
+                        <p class="miniature-category">Every day</p>
+                    </div>
+                    <div class="miniature">
+                        <img src="BALCK COURRIER.png"
+                            alt="Bolso de Hombre">
+                        <p class="miniature-description">
+                            <span class="product-name">Black courrier</span>
+                            <span class="product-price">-395 €</span>
+                        </p>
+                        <p class="miniature-category">Fashion</p>
+                    </div>
+                    <div class="miniature">
+                        <img src="BLACK DUFFLE.png"
+                            alt="Bolso de lona negra">
+                        <p class="miniature-description">
+                            <span class="product-name">Black Duffle</span>
+                            <span class="product-price">-420 €</span>
+                        </p>
+                        <p class="miniature-category">Fashion</p>
+                    </div>
+                    <div class="miniature">
+                        <img src="LAP TOP HOLSTER.png"
+                            alt="Funda computador">
+                        <p class="miniature-description">
+                            <span class="product-name">Lap Top Holster</span>
+                            <span class="product-price">-195 €</span>
+                        </p>
+                        <p class="miniature-category">Every day</p>
+                    </div>
+                    <div class="miniature">
+                        <img src="BLACK WORKBAG.png"
+                            alt="Bolso de trabajo">
+                        <p class="miniature-description">
+                            <span class="product-name">black workbag</span>
+                            <span class="product-price">-395 €</span>
+                        </p>
+                        <p class="miniature-category">Fashion</p>
+                    </div>
+                    <div class="miniature">
+                        <img src="https://purepng.com/public/uploads/large/purepng.com-black-walletwalletsmallflat-casecard-slotsleatherblack-1421526416647wea3r.png"
+                            alt="Billetera negra">
+                        <p class="miniature-description">
+                            <span class="product-name"> Wallet</span>
+                            <span class="product-price">-95 €</span>
+                        </p>
+                        <p class="miniature-category">Every day</p>
+                    </div>
+                </div>
             </section>
         </div>
 
         <footer>
-            <ul>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#media">Media</a></li>
-                <li><a href="#legal">Legal</a></li>
-                <li><a href="#cookies">Cookies</a></li>
-            </ul>
-            <p>Lu Ma Mi Ju Vi</p>
+            <div class="en">
+              <span class="language-selector">EN ▼</span>
+            </div>
+            <div class="dbhref">
+                <ul>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#media">Media</a></li>
+                    <li><a href="#legal">Legal</a></li>
+                    <li><a href="#cookies">Cookies</a></li>
+                </ul>
+            </div>
+        <div class="Diassemana">
+                <p>Lu Ma Mi Ju Vi</p>
+            </div>
         </footer>
 
 </body>
+
 </html>
